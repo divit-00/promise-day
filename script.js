@@ -1,7 +1,7 @@
 const heart = document.getElementById("heart");
 const message = document.getElementById("message");
 
-// Save original message for typing
+// save original content
 const fullContent = message.innerHTML;
 message.innerHTML = "";
 
@@ -11,45 +11,56 @@ heart.addEventListener("click", () => {
 
   let index = 0;
 
-  // ✍️ Typing animation
-  const typer = setInterval(() => {
+  // ✍️ typing animation
+  const typing = setInterval(() => {
     message.innerHTML = fullContent.slice(0, index);
     index++;
 
     if (index > fullContent.length) {
-      clearInterval(typer);
-    }
-  }, 18); // speed (lower = faster)
+      clearInterval(typing);
 
-  // 🌹 Rose petals rain
+      // 💖 I LOVE YOU POP after typing ends
+      setTimeout(showLovePop, 400);
+    }
+  }, 18);
+
+  // 🌹 roses
   setInterval(createPetal, 350);
 
-  // ❤️ Floating hearts
+  // ❤️ floating hearts
   for (let i = 0; i < 15; i++) {
     createHeart();
   }
 });
 
-// Floating heart function
+// floating heart
 function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "floating-heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 15 + 15 + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 4000);
+  const h = document.createElement("div");
+  h.className = "floating-heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 15 + 15 + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 4000);
 }
 
-// Rose petal function
+// rose petal
 function createPetal() {
-  const petal = document.createElement("div");
-  petal.className = "petal";
-  petal.innerHTML = "🌹";
-  petal.style.left = Math.random() * 100 + "vw";
-  petal.style.animationDuration = Math.random() * 3 + 3 + "s";
-  document.body.appendChild(petal);
+  const p = document.createElement("div");
+  p.className = "petal";
+  p.innerHTML = "🌹";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = Math.random() * 3 + 3 + "s";
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 6000);
+}
 
-  setTimeout(() => petal.remove(), 6000);
+// 💖 I LOVE YOU POP
+function showLovePop() {
+  const love = document.createElement("div");
+  love.className = "love-pop";
+  love.innerHTML = "❤️ I Love You ❤️";
+  document.body.appendChild(love);
+
+  setTimeout(() => love.remove(), 1800);
 }
