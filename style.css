@@ -140,3 +140,26 @@ body {
     font-size: 13px;
   }
 }
+/* ✨ Sparkle particles */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleAnim 1.2s ease-out forwards;
+  box-shadow: 0 0 8px red;
+  z-index: 6;
+}
+
+@keyframes sparkleAnim {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
