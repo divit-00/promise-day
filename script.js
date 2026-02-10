@@ -62,5 +62,31 @@ function showLovePop() {
   love.innerHTML = "❤️ I Love You ❤️";
   document.body.appendChild(love);
 
+  // ✨ create sparkles around text
+  for (let i = 0; i < 25; i++) {
+    createSparkle();
+  }
+
   setTimeout(() => love.remove(), 1800);
+}
+
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  sparkle.style.left = centerX + "px";
+  sparkle.style.top = centerY + "px";
+
+  const x = (Math.random() - 0.5) * 200 + "px";
+  const y = (Math.random() - 0.5) * 200 + "px";
+
+  sparkle.style.setProperty("--x", x);
+  sparkle.style.setProperty("--y", y);
+
+  document.body.appendChild(sparkle);
+
+  setTimeout(() => sparkle.remove(), 1200);
 }
